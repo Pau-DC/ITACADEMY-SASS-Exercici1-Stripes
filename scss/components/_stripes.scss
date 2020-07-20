@@ -1,0 +1,46 @@
+
+.strip{
+  position: absolute;
+  width: 20vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  h1{
+    color: white;
+    font-family: $main-font;
+    font-size: 3rem;
+  }
+}
+
+.strip .strip-content::before{
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: skew(30deg) scale(1);
+  transition: transform 0.3s ease-out;
+}
+
+.strip:hover .strip-content::before{
+  transform: skew(30deg) scale(2.5);
+
+}
+
+@for $i from 0 through 4{
+  #block-#{$i+1} {
+    left: 20vw * $i;
+    transform: #{map-get($translation-block,$i+1)};
+    animation-name: block-#{$i+1}-in;
+    animation-duration: 0.5s;
+    animation-delay: 0.05s * $i;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+  }
+}

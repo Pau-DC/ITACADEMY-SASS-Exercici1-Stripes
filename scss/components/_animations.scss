@@ -1,0 +1,18 @@
+$translation-block:(
+  1: translate3d(-20vw, 0, 0),
+  2: translate3d(0, 100vh,0),
+  3: translate3d(0px,-100vh,0),
+  4: translate3d(0,100vh,0),
+  5: translate3d(20vw,0,0)
+);
+
+@for $i from 1 through 5{
+  @keyframes block-#{$i}-in{
+    0%{
+      transform: #{map-get($translation-block,$i)};
+    }
+    100%{
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
